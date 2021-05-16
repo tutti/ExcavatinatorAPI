@@ -207,6 +207,7 @@ Blizzard's API for archaeology projects has some limitations. It only returns pr
 To provide mapping for an artifact, use the race's setArtifactMapping function. This function takes two arguments - the first, the item or spell name, and the second, the project name. The ideal time to do this is when Excavatinator triggers its readyForMapping event.
 
 Excavatinator itself contains code for this mapping for the English artifacts. This code, which also serves as a complete example of how to do mapping, looks like this:
+
     Excavatinator.events.readyForMapping:addOnceListener(function()
         Excavatinator:getRaceByKey('demonic'):setArtifactMapping('Wyrmy Tunkins', 'Infernal Device')
         Excavatinator:getRaceByKey('highborne'):setArtifactMapping('Dark Shard of Sciallax', 'Orb of Sciallax')
