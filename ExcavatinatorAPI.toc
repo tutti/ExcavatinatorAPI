@@ -1,0 +1,16 @@
+## Interface: 90001
+## Title: Excavatinator API
+## Notes: The information handling for Excavatinator, in API form
+## Author: Tutti (Azjol-Nerub EU)
+## Version: 4.0
+
+Class.lua
+
+data.lua
+loader.lua
+Accessor.lua
+Timer.lua
+Events.lua
+Artifact.lua
+Race.lua
+Excavatinator.lua
