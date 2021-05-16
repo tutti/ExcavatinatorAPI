@@ -4,29 +4,6 @@ local Race = private.Race
 local WoWEvents = private.WoWEvents
 local Accessor = private.Accessor
 
---[[
-local Excavatinator = {
-    events = private.publicEvents,
-    ready = false,
-    Class = private.Class,
-    Event = private.Event,
-
-    -- Crate information
-    numberOfCrates = 0,
-    numberOfCrateableArtifacts = 0,
-    crateableArtifacts = {},
-
-    numberOfRaces = 0,
-}
-
-local Excavatinator = {}
-setmetatable(Excavatinator, {
-    __index = Excavatinator,
-    __newIndex = function() end
-})
-_G.Excavatinator = Excavatinator
-]]
-
 local Excavatinator = {
     events = private.events,
     ready = false,

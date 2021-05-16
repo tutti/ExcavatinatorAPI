@@ -37,12 +37,14 @@ function Event:addListener(listener)
     -- Add a listener that is called every time the event is triggered
     self.listeners[listener] = true
     self.onceListeners[listener] = nil
+    return listener
 end
 
 function Event:addOnceListener(listener)
     -- Add a listener that is called only the next time the event is triggered
     self.onceListeners[listener] = true
     self.listeners[listener] = nil
+    return listener
 end
 
 function Event:removeListener(listener)

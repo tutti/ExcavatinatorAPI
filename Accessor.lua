@@ -21,7 +21,7 @@ function Accessor:construct(underlying)
             if self.exposedFunctions[key] then return function(_tbl, ...) return self.exposedFunctions[key](self.underlying, ...) end end
             return nil
         end,
-        __newindex = function() end,
+        __newindex = function() error('Cannot set value on read-only table.') end,
         __metatable = nil,
     })
 end
