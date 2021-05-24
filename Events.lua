@@ -99,6 +99,9 @@ private.events = {
     artifactCompleted = Event:new('artifactCompleted'),
     raceUpdated = Event:new('raceUpdated'),
     cratesUpdated = Event:new('cratesUpdated'),
+    enterDigsite = Event:new('enterDigsite'),
+    leaveDigsite = Event:new('leaveDigsite'),
+    newDigsiteFind = Event:new('newDigsiteFind'),
 }
 
 private.publicEvents = {}

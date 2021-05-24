@@ -31,7 +31,7 @@ function ArtifactAccessor:construct(artifact)
     self:exposeValue('achievementRequirement')
 
     self:exposeValue('hasBeenCompleted')
-    self:exposeValue('firstCompletionTime')
+    self:exposeValue('firstCompletionTime') -- TODO This feature is incomplete, and not listed in the documentation.
     self:exposeValue('timesCompleted')
     self:exposeValue('pristineHasBeenCompleted')
 
@@ -168,7 +168,7 @@ function Artifact:getProgress(useKeystones)
     local activeArtifact = self.race:getActiveArtifact()
     if activeArtifact ~= self then return 0, 0, false end
 
-    SetSelectedArtifact(self.race.id)
+    SetSelectedArtifact(self.race.index)
     if useKeystones then
         while SocketItemToArtifact() do end
     else

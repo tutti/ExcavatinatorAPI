@@ -7,6 +7,7 @@ private.data = {}
 
 private.data.races = {
     dwarf = {
+        id = 1,
         fragment = 384,
         keystone = 52843,
         artifacts = {
@@ -44,6 +45,7 @@ private.data.races = {
         },
     },
     draenei = {
+        id = 2,
         fragment = 398,
         keystone = 64394,
         artifacts = {
@@ -60,6 +62,7 @@ private.data.races = {
         },
     },
     fossil = {
+        id = 3,
         fragment = 393,
         artifacts = {
             { spell =  98560, item =  69776, rarity =   "rare", patch = 40100 }, -- Ancient Amber
@@ -82,6 +85,7 @@ private.data.races = {
         },
     },
     nightelf = {
+        id = 4,
         fragment = 394,
         keystone = 63127,
         artifacts = {
@@ -113,6 +117,7 @@ private.data.races = {
         },
     },
     nerubian = {
+        id = 5,
         fragment = 400,
         keystone = 64396,
         artifacts = {
@@ -127,7 +132,25 @@ private.data.races = {
             { spell =  91211, item =  64480, rarity = "common", patch = 40000 }, -- Vizier's Scrawled Streamer
         },
     },
+    orc = {
+        id = 6,
+        fragment = 397,
+        keystone = 64392,
+        artifacts = {
+            { spell =  90831, item =  64436, rarity = "common", patch = 40000 }, -- Fiendish Whip
+            { spell =  90734, item =  64421, rarity = "common", patch = 40000 }, -- Fierce Wolf Figurine
+            { spell =  90728, item =  64418, rarity = "common", patch = 40000 }, -- Gray Candle Stub
+            { spell =  90843, item =  64644, rarity =   "rare", patch = 40000 }, -- Headdress of the First Shaman
+            { spell =  90720, item =  64417, rarity = "common", patch = 40000 }, -- Maul of Stone Guard Mur'og
+            { spell =  90730, item =  64419, rarity = "common", patch = 40000 }, -- Rusted Steak Knife
+            { spell =  90732, item =  64420, rarity = "common", patch = 40000 }, -- Scepter of Nekros Skullcrusher
+            { spell =  90833, item =  64438, rarity = "common", patch = 40000 }, -- Skull Drinking Cup
+            { spell =  90832, item =  64437, rarity = "common", patch = 40000 }, -- Tile of Glazed Clay
+            { spell =  90622, item =  64389, rarity = "common", patch = 40000 }, -- Tiny Bronze Scorpion
+        },
+    },
     tolvir = {
+        id = 7,
         fragment = 401,
         keystone = 64397,
         artifacts = {
@@ -146,23 +169,8 @@ private.data.races = {
             { spell =  91782, item =  64655, rarity = "common", patch = 40000 }, -- Tiny Oasis Mosaic
         },
     },
-    orc = {
-        fragment = 397,
-        keystone = 64392,
-        artifacts = {
-            { spell =  90831, item =  64436, rarity = "common", patch = 40000 }, -- Fiendish Whip
-            { spell =  90734, item =  64421, rarity = "common", patch = 40000 }, -- Fierce Wolf Figurine
-            { spell =  90728, item =  64418, rarity = "common", patch = 40000 }, -- Gray Candle Stub
-            { spell =  90843, item =  64644, rarity =   "rare", patch = 40000 }, -- Headdress of the First Shaman
-            { spell =  90720, item =  64417, rarity = "common", patch = 40000 }, -- Maul of Stone Guard Mur'og
-            { spell =  90730, item =  64419, rarity = "common", patch = 40000 }, -- Rusted Steak Knife
-            { spell =  90732, item =  64420, rarity = "common", patch = 40000 }, -- Scepter of Nekros Skullcrusher
-            { spell =  90833, item =  64438, rarity = "common", patch = 40000 }, -- Skull Drinking Cup
-            { spell =  90832, item =  64437, rarity = "common", patch = 40000 }, -- Tile of Glazed Clay
-            { spell =  90622, item =  64389, rarity = "common", patch = 40000 }, -- Tiny Bronze Scorpion
-        },
-    },
     troll = {
+        id = 8,
         fragment = 385,
         keystone = 63128,
         artifacts = {
@@ -186,6 +194,7 @@ private.data.races = {
         },
     },
     vrykul = {
+        id = 27,
         fragment = 399,
         keystone = 64395,
         artifacts = {
@@ -199,6 +208,7 @@ private.data.races = {
         },
     },
     mantid = {
+        id = 29,
         fragment = 754,
         keystone = 95373,
         artifacts = {
@@ -215,6 +225,7 @@ private.data.races = {
         },
     },
     pandaren = {
+        id = 229,
         fragment = 676,
         keystone = 79868,
         artifacts = {
@@ -233,6 +244,7 @@ private.data.races = {
         },
     },
     mogu = {
+        id = 231,
         fragment = 677,
         keystone = 79869,
         artifacts = {
@@ -251,6 +263,7 @@ private.data.races = {
         },
     },
     arakkoa = {
+        id = 315,
         fragment = 829,
         keystone = 109585,
         artifacts = {
@@ -269,6 +282,7 @@ private.data.races = {
         },
     },
     draenorclans = {
+        id = 350,
         fragment = 821,
         keystone = 108439,
         artifacts = {
@@ -296,6 +310,7 @@ private.data.races = {
         },
     },
     ogre = {
+        id = 382,
         fragment = 828,
         keystone = 109584,
         artifacts = {
@@ -314,6 +329,7 @@ private.data.races = {
         },
     },
     highborne = {
+        id = 404,
         fragment = 1172,
         keystone = 130903,
         artifacts = {
@@ -330,6 +346,7 @@ private.data.races = {
         },
     },
     highmountaintauren = {
+        id = 406,
         fragment = 1173,
         keystone = 130904,
         artifacts = {
@@ -344,6 +361,7 @@ private.data.races = {
         },
     },
     demonic = {
+        id = 408,
         fragment = 1174,
         keystone = 130905,
         artifacts = {
@@ -359,7 +377,24 @@ private.data.races = {
             { spell = 223858, item = 131732, rarity =   "rare", patch = 70000, rareQuest = 41169 },                                          -- Purple Hills of Mac'Aree
         },
     },
+    zandalari = {
+        id = 423,
+        fragment = 1534,
+        keystone = 154989,
+        artifacts = {
+            { spell = 257720, item = 154913, rarity = "common", patch = 80000, pristine = { item = 154931, quest =  51926 }, crate = true }, -- Akun'Jar Vase
+            { spell = 257721, item = 154914, rarity = "common", patch = 80000, pristine = { item = 154932, quest =  51929 }, crate = true }, -- Urn of Passage
+            { spell = 257722, item = 154915, rarity = "common", patch = 80000, pristine = { item = 154933, quest =  51932 }, crate = true }, -- Rezan Idol
+            { spell = 257723, item = 154916, rarity = "common", patch = 80000, pristine = { item = 154934, quest =  51934 }, crate = true }, -- High Apothecary's Hood
+            { spell = 257724, item = 154917, rarity = "common", patch = 80000, pristine = { item = 154935, quest =  51936 }, crate = true }, -- Bwonsamdi Voodoo Mask
+            { spell = 273812, item = 160743, rarity = "common", patch = 80000, pristine = { item = 160744, quest =  51937 }, crate = true }, -- Blowgun of the Sethra
+            { spell = 273815, item = 160740, rarity =   "rare", patch = 80000 },                                                             -- Croak Crock
+            { spell = 273817, item = 161080, rarity =   "rare", patch = 80000 },                                                             -- Intact Direhorn Hatchling
+            { spell = 273819, item = 160753, rarity =   "rare", patch = 80000 },                                                             -- Sanguinating Totem
+        },
+    },
     drust = {
+        id = 424,
         fragment = 1535,
         keystone = 154990,
         artifacts = {
@@ -374,21 +409,6 @@ private.data.races = {
             { spell = 273855, item = 160833, rarity =   "rare", patch = 80000 },                                                             -- Fetish of the Tormented Mind
         },
     },
-    zandalari = {
-        fragment = 1534,
-        keystone = 154989,
-        artifacts = {
-            { spell = 257720, item = 154913, rarity = "common", patch = 80000, pristine = { item = 154931, quest =  51926 }, crate = true }, -- Akun'Jar Vase
-            { spell = 257721, item = 154914, rarity = "common", patch = 80000, pristine = { item = 154932, quest =  51929 }, crate = true }, -- Urn of Passage
-            { spell = 257722, item = 154915, rarity = "common", patch = 80000, pristine = { item = 154933, quest =  51932 }, crate = true }, -- Rezan Idol
-            { spell = 257723, item = 154916, rarity = "common", patch = 80000, pristine = { item = 154934, quest =  51934 }, crate = true }, -- High Apothecary's Hood
-            { spell = 257724, item = 154917, rarity = "common", patch = 80000, pristine = { item = 154935, quest =  51936 }, crate = true }, -- Bwonsamdi Voodoo Mask
-            { spell = 273812, item = 160743, rarity = "common", patch = 80000, pristine = { item = 160744, quest =  51937 }, crate = true }, -- Blowgun of the Sethra
-            { spell = 273815, item = 160740, rarity =   "rare", patch = 80000 },                                                             -- Croak Crock
-            { spell = 273817, item = 161080, rarity =   "rare", patch = 80000 },                                                             -- Intact Direhorn Hatchling
-            { spell = 273819, item = 160753, rarity =   "rare", patch = 80000 },                                                             -- Sanguinating Totem
-        },
-    }
 }
 
 private.data.raceList = {

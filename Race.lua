@@ -84,10 +84,11 @@ private.Race = Race
 -- Wyrmy Tunkins -> Infernal Device
 -- Dark Shard of Sciallax -> Orb of Sciallax
 
-function Race:construct(id, data)
+function Race:construct(index, data)
     -- Basic information
-    self.id = id
-    self.name, self.icon = GetArchaeologyRaceInfo(id)
+    self.index = index
+    self.id = data.id
+    self.name, self.icon = GetArchaeologyRaceInfo(index)
 
     -- Fragments and keystones
     self.fragmentID = data.fragment
@@ -123,10 +124,10 @@ function Race:construct(id, data)
 end
 
 function Race:_attemptLoad()
-    local artifactCount = GetNumArtifactsByRace(self.id)
+    local artifactCount = GetNumArtifactsByRace(self.index)
     local unmappedArtifacts = {}
     for i=1, artifactCount do
-        local name, description, _, iconID, _, keystoneCount, _, _, completionTime, completionCount = GetArtifactInfoByRace(self.id, i)
+        local name, description, _, iconID, _, keystoneCount, _, _, completionTime, completionCount = GetArtifactInfoByRace(self.index, i)
         local artifact = self:getArtifactByName(name)
         if artifact then
             if not artifact._loaded then artifact:_loadInfo(description, icon, keystoneCount, completionTime, completionCount) end
@@ -208,7 +209,7 @@ function Race:getArtifactByName(name)
 end
 
 function Race:getActiveArtifact()
-    local name = GetActiveArtifactByRace(self.id)
+    local name = GetActiveArtifactByRace(self.index)
     if not name then return nil end
     return self:getArtifactByName(name)
 end
