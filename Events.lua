@@ -102,9 +102,5 @@ private.events = {
     enterDigsite = Event:new('enterDigsite'),
     leaveDigsite = Event:new('leaveDigsite'),
     newDigsiteFind = Event:new('newDigsiteFind'),
+    digsitesUpdated = Event:new('digsitesUpdated'),
 }
-
-private.publicEvents = {}
-for k, v in pairs(private.events) do
-    private.publicEvents[k] = v.listenable
-end

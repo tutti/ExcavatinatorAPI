@@ -4,6 +4,18 @@ local Class = private.Class
 local Find = private.Find
 local Timer = private.Timer
 local WoWEvents = private.WoWEvents
+local Accessor = private.Accessor
+
+local ActiveDigsiteAccessor = Accessor:extend()
+function ActiveDigsiteAccessor:construct(activeDigsite)
+    Accessor.construct(self, activeDigsite)
+
+    self:exposeConstant('name', activeDigsite.digsite.name)
+    self:exposeConstant('id', activeDigsite.digsite.researchSiteID)
+    self:exposeVariable('race', function() return activeDigsite.raceID and _G.Excavatinator:getRaceByID(activeDigsite.raceID) or nil end)
+    self:exposeConstant('worldMapX', activeDigsite.digsite.position.x)
+    self:exposeConstant('worldMapY', activeDigsite.digsite.position.y)
+end
 
 function len(pos1, pos2)
     -- Uses the map vector functions of two vectors to calculate their distance
@@ -21,7 +33,10 @@ function FindManager:construct()
     self.finds = {}
     self.digsites = {}
 
+    self.activeDigsites = {}
+    self.lastActiveDigsites = ''
     self.currentDigsite = nil
+    self.lastDigsite = nil
 
     for i, item in ipairs(self.data) do
         self.digsites[item.digsiteID] = self.digsites[item.digsiteID] or {}
@@ -40,10 +55,72 @@ function FindManager:construct()
     end)
 end
 
+function FindManager:updateDigsiteList()
+    -- Find the continent level map ID
+    local mapID = C_Map.GetBestMapForUnit('player')
+    if not mapID then return end -- Player is not on a map (loading screen?)
+    local map = C_Map.GetMapInfo(C_Map.GetBestMapForUnit('player'))
+    while map and map.mapType ~= Enum.UIMapType.Continent do
+        map = C_Map.GetMapInfo(map.parentMapID)
+    end
+    if not map then return end
+
+    local digsites = C_ResearchInfo.GetDigSitesForMap(map.mapID)
+
+    -- Mark all digsites as inactive first
+    for i, digsite in pairs(self.activeDigsites) do
+        digsite.active = false
+    end
+
+    -- Update the found digsites and mark them active
+    for i, digsite in ipairs(digsites) do
+        self.activeDigsites[digsite.researchSiteID] = self.activeDigsites[digsite.researchSiteID] or { digsite = digsite }
+        if not self.activeDigsites[digsite.researchSiteID].accessor then
+            self.activeDigsites[digsite.researchSiteID].accessor = ActiveDigsiteAccessor:new(self.activeDigsites[digsite.researchSiteID])
+        end
+
+        if not self.activeDigsites[digsite.researchSiteID].raceID then
+            self.activeDigsites[digsite.researchSiteID].raceID = self.digsites[digsite.researchSiteID] and self.digsites[digsite.researchSiteID][1].data.raceID or nil
+        end
+
+        self.activeDigsites[digsite.researchSiteID].active = true
+    end
+
+    local activeDigsiteIDs = {}
+
+    -- Remove inactive digsites
+    for i, digsite in pairs(self.activeDigsites) do
+        if not digsite.active then
+            self.activeDigsites[i] = nil
+        else
+            activeDigsiteIDs[#activeDigsiteIDs+1] = i
+        end
+    end
+
+    -- Sort active digsite IDs
+    table.sort(activeDigsiteIDs)
+
+    -- Combine with found race IDs
+    local _len = #activeDigsiteIDs -- Because the length'll change
+    for i=1, _len do
+        activeDigsiteIDs[#activeDigsiteIDs+1] = self.activeDigsites[activeDigsiteIDs[i]].raceID or 0
+    end
+
+    -- Create a string to compare to previous
+    local activeString = table.concat(activeDigsiteIDs, ',')
+    if activeString ~= self.lastActiveDigsites then
+        self.lastActiveDigsites = activeString
+        private.events.digsitesUpdated:trigger()
+    end
+end
+
 function FindManager:updateDigsite()
+    self:updateDigsiteList()
+
     if not CanScanResearchSite() then
-        if self.currentDigsite then private.events.leaveDigsite:trigger() end
+        self.lastDigsite = self.currentDigsite
         self.currentDigsite = nil
+        if self.lastDigsite then private.events.leaveDigsite:trigger() end
         return
     end
 
@@ -66,9 +143,9 @@ function FindManager:updateDigsite()
         end
     end
 
-    if not self.currentDigsite or found.researchSiteID ~= self.currentDigsite.researchSiteID then
-        self.currentDigsite = found
-        private.events.enterDigsite:trigger(found)
+    if not self.currentDigsite or found.researchSiteID ~= self.currentDigsite.digsite.researchSiteID then
+        self.currentDigsite = self.activeDigsites[found.researchSiteID]
+        private.events.enterDigsite:trigger(self.currentDigsite)
     end
 end
 
@@ -89,7 +166,8 @@ function FindManager:registerNewFind(findData)
 end
 
 function FindManager:registerFind(raceID)
-    if not self.currentDigsite then return end -- If there is no digsite to tie the find to, ignore it
+    local digsite = self.currentDigsite or self.lastDigsite
+    if not digsite then return end -- If there is no digsite to tie the find to, ignore it
 
     local playerMap = C_Map.GetBestMapForUnit('player')
     local playerPosition = C_Map.GetPlayerMapPosition(playerMap, 'player')
@@ -97,7 +175,7 @@ function FindManager:registerFind(raceID)
 
     local data = {
         raceID = raceID,
-        digsiteID = self.currentDigsite.researchSiteID,
+        digsiteID = digsite.digsite.researchSiteID,
         worldX = playerX,
         worldY = playerY,
         mapX = playerPosition.x,

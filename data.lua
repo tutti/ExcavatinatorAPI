@@ -153,6 +153,7 @@ private.data.races = {
         id = 7,
         fragment = 401,
         keystone = 64397,
+        keystoneValue = 12,
         artifacts = {
             { spell =  91790, item =  64657, rarity = "common", patch = 40000 }, -- Canopic Jar
             { spell =  91775, item =  64652, rarity = "common", patch = 40000 }, -- Castle of Sand
@@ -211,6 +212,7 @@ private.data.races = {
         id = 29,
         fragment = 754,
         keystone = 95373,
+        keystoneValue = 20,
         artifacts = {
             { spell = 139779, item =  95376, rarity = "common", patch = 50200, pristine = { item =  95384, quest =  32687 }, achieve = 20, crate = true }, -- Ancient Sap Feeder
             { spell = 139776, item =  95375, rarity = "common", patch = 50200, pristine = { item =  95383, quest =  32686 }, achieve = 20, crate = true }, -- Banner of the Mantid Empire
@@ -228,6 +230,7 @@ private.data.races = {
         id = 229,
         fragment = 676,
         keystone = 79868,
+        keystoneValue = 20,
         artifacts = {
             { spell = 113977, item =  79903, rarity = "common", patch = 50000, pristine = { item =  89183, quest =  31802 }, achieve = 20, crate = true }, -- Apothecary Tins
             { spell = 113975, item =  79901, rarity = "common", patch = 50000, pristine = { item =  89181, quest =  31800 }, achieve = 20, crate = true }, -- Carved Bronze Mirror
@@ -247,6 +250,7 @@ private.data.races = {
         id = 231,
         fragment = 677,
         keystone = 79869,
+        keystoneValue = 20,
         artifacts = {
             { spell = 113993, item =  89614, rarity =   "rare", patch = 50000 },                                                                           -- Anatomical Dummy
             { spell = 113983, item =  79909, rarity = "common", patch = 50000, pristine = { item =  89170, quest =  31787 }, achieve = 20, crate = true }, -- Cracked Mogu Runestone

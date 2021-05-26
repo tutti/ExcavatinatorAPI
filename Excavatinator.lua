@@ -24,6 +24,39 @@ local racesByIndex = {}
 local racesByID = {}
 local racesByKey = {}
 
+function Excavatinator:getRaceByIndex(index)
+    return racesByIndex[index]
+end
+
+function Excavatinator:getRaceByID(id)
+    return racesByID[id]
+end
+
+function Excavatinator:getRaceByKey(key)
+    return racesByKey[key]
+end
+
+function Excavatinator:getCurrentDigsite()
+    return private.FindManager.currentDigsite
+end
+
+function Excavatinator:getAllFinds()
+    return private.FindManager.finds
+end
+
+function Excavatinator:getFindsForDigsite(digsiteID)
+    return private.FindManager.digsites[digsiteID] or {}
+end
+
+function Excavatinator:getFindsForCurrentDigsite()
+    if not self:getCurrentDigsite() then return {} end
+    return self:getFindsForDigsite(self:getCurrentDigsite().digsite.researchSiteID)
+end
+
+function Excavatinator:getActiveDigsites()
+    return private.FindManager.activeDigsites
+end
+
 local accessor = Accessor:new(Excavatinator)
 accessor:exposeValue('ready')
 accessor:exposeValue('numberOfCrates')
@@ -47,7 +80,10 @@ accessor:exposeFunction('getRaceByKey', function(self, key)
     local race = racesByKey[key]
     if race then return race.accessor.access end
 end)
-accessor:exposeFunction('getCurrentDigsite', Excavatinator.getCurrentDigsite)
+accessor:exposeFunction('getCurrentDigsite', function(self)
+    local digsite = Excavatinator:getCurrentDigsite()
+    return digsite and digsite.accessor.access or nil
+end)
 accessor:exposeFunction('getAllFinds', function(self)
     local finds = {}
     for i, find in ipairs(Excavatinator:getAllFinds()) do finds[i] = find.accessor.access end
@@ -62,6 +98,11 @@ accessor:exposeFunction('getFindsForCurrentDigsite', function(self)
     local finds = {}
     for i, find in ipairs(Excavatinator:getFindsForCurrentDigsite()) do finds[i] = find.accessor.access end
     return finds
+end)
+accessor:exposeFunction('getActiveDigsites', function(self)
+    local digsites = {}
+    for i, digsite in pairs(Excavatinator:getActiveDigsites()) do digsites[#digsites+1] = digsite.accessor.access end
+    return digsites
 end)
 
 _G.Excavatinator = accessor.access
@@ -111,35 +152,6 @@ local function load(src)
     -- Trigger the loaded event
     Excavatinator.ready = true
     private.events.ready:trigger()
-end
-
-function Excavatinator:getRaceByIndex(index)
-    return racesByIndex[index]
-end
-
-function Excavatinator:getRaceByID(id)
-    return racesByID[id]
-end
-
-function Excavatinator:getRaceByKey(key)
-    return racesByKey[key]
-end
-
-function Excavatinator:getCurrentDigsite()
-    return private.FindManager.currentDigsite
-end
-
-function Excavatinator:getAllFinds()
-    return private.FindManager.finds
-end
-
-function Excavatinator:getFindsForDigsite(digsiteID)
-    return private.FindManager.digsites[digsiteID] or {}
-end
-
-function Excavatinator:getFindsForCurrentDigsite()
-    if not self:getCurrentDigsite() then return {} end
-    return self:getFindsForDigsite(self:getCurrentDigsite().researchSiteID)
 end
 
 -- Wait for everything to be loaded and ready from the API's side before loading
