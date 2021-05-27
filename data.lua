@@ -345,7 +345,7 @@ private.data.races = {
             { spell = 223844, item = 131717, rarity =   "rare", patch = 70000, rareQuest = 41173 },                                          -- Starlight Beacon
             { spell = 223846, item = 131740, rarity =   "rare", patch = 70000, rareQuest = 41176 },                                          -- Crown Jewels of Suramar
             { spell = 223848, item = 131745, rarity =   "rare", patch = 70000, rareQuest = 41179 },                                          -- Key of Kalyndras
-            { spell = 223849, item = 134078, rarity =   "rare", patch = 70000, rareQuest = 41182 },                                          -- Shard of Sciallax
+            { spell = 223849, item = 134078, rarity =   "rare", patch = 70000, rareQuest = 41182 },                                          -- Orb of Sciallax
             { spell = 223850, item = 131744, rarity =   "rare", patch = 70000, rareQuest = 41185 },                                          -- Key to Nar'thalas Academy
         },
     },
@@ -436,4 +436,20 @@ private.data.raceList = {
     "fossil",               -- 18
     "draenei",              -- 19
     "dwarf"                 -- 20
+}
+
+private.data.legionSchedule = {
+    { rareRace = 'highborne',          fragmentRace = 'highborne',          itemID = 131745, }, -- Key of Kalyndras
+    { rareRace = 'demonic',            fragmentRace = 'demonic',            itemID = 136922, }, -- Wyrmy Tunkins
+    { rareRace = 'highborne',          fragmentRace = 'highmountaintauren', itemID = 134078, }, -- Orb of Sciallax
+    { rareRace = 'highmountaintauren', fragmentRace = 'highmountaintauren', itemID = 131736, }, -- Prizerock Neckband
+    { rareRace = 'demonic',            fragmentRace = 'demonic',            itemID = 131743, }, -- Blood of Young Mannoroth
+    { rareRace = 'highborne',          fragmentRace = 'highborne',          itemID = 131744, }, -- Key to Nar'thalas Academy
+    { rareRace = 'demonic',            fragmentRace = 'demonic',            itemID = 131732, }, -- Purple Hills of Mac'Aree
+    { rareRace = 'highmountaintauren', fragmentRace = 'highmountaintauren', itemID = 131734, }, -- Spirit of Eche'ro
+    { rareRace = 'demonic',            fragmentRace = 'demonic',            itemID = 131724, }, -- Crystalline Eye of Undravius
+    { rareRace = 'highborne',          fragmentRace = 'highborne',          itemID = 131717, }, -- Starlight Beacon
+    { rareRace = 'highmountaintauren', fragmentRace = 'highmountaintauren', itemID = 131733, }, -- Spear of Rethu
+    { rareRace = 'highborne',          fragmentRace = 'highborne',          itemID = 131740, }, -- Crown Jewels of Suramar
+    { rareRace = 'demonic',            fragmentRace = 'demonic',            itemID = 131735, }, -- Imp Generator
 }

@@ -219,3 +219,6 @@ Excavatinator itself contains code for this mapping for the English artifacts. T
 ## TODO List
 - The projects simply named "Archaeology Project" are only named that in English. Fix this code so it works universally.
 - Remove as many interactions with the default archaeology window as possible. Calculate progress by counting keystones and fragments, not by simulating entering the main window.
+- Add a list of digsites on the current world map, along with the race if known.
+- Add a function for buying fragment crates off vendors en masse. The BuyMerchantItem function can buy one at a time without having to confirm.
+- Cache digsite objects to ensure they remain the same between uses.

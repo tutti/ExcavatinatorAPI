@@ -31,12 +31,15 @@ function ArtifactAccessor:construct(artifact)
     self:exposeValue('achievementRequirement')
 
     self:exposeValue('hasBeenCompleted')
-    self:exposeValue('firstCompletionTime') -- TODO This feature is incomplete, and not listed in the documentation.
+    --self:exposeValue('firstCompletionTime') -- TODO This feature is incomplete, and not listed in the documentation.
     self:exposeValue('timesCompleted')
     self:exposeValue('pristineHasBeenCompleted')
 
     self:exposeFunction('getProgress', artifact.getProgress)
     self:exposeFunction('solve', artifact.solve)
+
+    self:exposeFunction('isAvailable', artifact.isAvailable)
+    self:exposeFunction('getWeeksUntilAvailable', artifact.getWeeksUntilAvailable)
 
     local eventAccessor = Accessor:new(artifact.events)
     for k, v in pairs(artifact.events) do
@@ -188,4 +191,55 @@ function Artifact:solve(useKeystones)
     local _, _, canSolve = self:getProgress(useKeystones)
     if not canSolve then return end
     SolveArtifact()
+end
+
+function Artifact:isAvailable()
+    -- Returns whether an artifact is available for discovery right now.
+    -- Applicable to rare Legion artifacts only.
+    -- Returns a boolean indicating whether the artifact is currently available
+    -- as a research quest, and a number indicating how many more weeks,
+    -- including the current one. If the artifact is not currently available,
+    -- the second number is always 0.
+    -- For all other artifacts, always returns (true, 0).
+
+    -- Check whether this is a Legion rare
+    if self.rarity == 'common' then return true, 0 end
+    if self.race.key ~= 'demonic' and self.race.key ~= 'highmountaintauren' and self.race.key ~= 'highborne' then return true, 0 end
+
+    local cyclePosition = math.ceil(private.Excavatinator.legionCycleWeek / 2)
+    local cycleItem = private.data.legionSchedule[cyclePosition]
+
+    if cycleItem.itemID == self.itemID then return true, (private.Excavatinator.legionCycleWeek % 2) + 1 end
+    return false, 0
+end
+
+function Artifact:getWeeksUntilAvailable()
+    -- Returns the number of weeks until this artifact is available as a
+    -- research quest. Applicable to rare Legion artifacts only.
+    -- If the artifact is the current Legion rare project, this will return 0.
+    -- Otherwise, returns the number of weeks until it is, where a 1 means it
+    -- will be available next week.
+    -- For all other artifact, this always returns 0.
+
+    -- Check whether this is a Legion rare
+    if self.rarity == 'common' then return 0 end
+    if self.race.key ~= 'demonic' and self.race.key ~= 'highmountaintauren' and self.race.key ~= 'highborne' then return 0 end
+
+    -- If this is the current project, then we're done - return 0.
+    local cyclePosition = math.ceil(private.Excavatinator.legionCycleWeek / 2)
+    local cycleItem = private.data.legionSchedule[cyclePosition]
+    if cycleItem.itemID == self.itemID then return 0 end
+
+    local weeks = (private.Excavatinator.legionCycleWeek % 2) - 1
+    for i=1, #private.data.legionSchedule do
+        cyclePosition = cyclePosition + 1
+        if cyclePosition > #private.data.legionSchedule then cyclePosition = 1 end
+        weeks = weeks + 2
+
+        cycleItem = private.data.legionSchedule[cyclePosition]
+        if cycleItem.itemID == self.itemID then break end
+    end
+
+    if cycleItem.itemID == self.itemID then return weeks end
+    return -1 -- Something went wrong
 end

@@ -35,6 +35,7 @@ function RaceAccessor:construct(race)
     Accessor.construct(self, race)
 
     self:exposeValue('id')
+    self:exposeValue('key')
     self:exposeValue('name')
     self:exposeValue('icon')
 
@@ -84,9 +85,10 @@ private.Race = Race
 -- Wyrmy Tunkins -> Infernal Device
 -- Dark Shard of Sciallax -> Orb of Sciallax
 
-function Race:construct(index, data)
+function Race:construct(index, key, data)
     -- Basic information
     self.index = index
+    self.key = key
     self.id = data.id
     self.name, self.icon = GetArchaeologyRaceInfo(index)
 
@@ -98,6 +100,7 @@ function Race:construct(index, data)
     -- Convert artifact data into artifact objects
     self.artifacts = {}
     self.artifactsByItemName = {}
+    self.artifactsByItemID = {}
     self.artifactsBySpellName = {}
     self.unmappedArtifactsByName = {}
     self.artifactMappings = {}
@@ -117,6 +120,7 @@ function Race:construct(index, data)
         local artifact = Artifact:new(data.artifacts[i], self)
         self.artifacts[i] = artifact
         self.artifactsByItemName[artifact.itemName:lower()] = artifact
+        self.artifactsByItemID[artifact.itemID] = artifact
         if artifact.spellName ~= 'Archaeology Project' then self.artifactsBySpellName[artifact.spellName:lower()] = artifact end
         -- Some expansions just made "Archaeology Project" the name of the spell
         -- These can't be used to identify the artifact

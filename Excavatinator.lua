@@ -13,7 +13,10 @@ local Excavatinator = {
     crateableArtifacts = {},
 
     numberOfRaces = 0,
+
+    legionCycleWeek = 0,
 }
+private.Excavatinator = Excavatinator
 
 local eventsAccessor = Accessor:new(private.events)
 for k, v in pairs(private.events) do
@@ -130,7 +133,7 @@ end
 local function load(src)
     for i=1, #private.data.raceList do
         local data = private.data.races[private.data.raceList[i]]
-        local race = Race:new(i, data)
+        local race = Race:new(i, private.data.raceList[i], data)
         racesByIndex[i] = race
         racesByID[data.id] = race
         racesByKey[private.data.raceList[i]] = race
@@ -139,6 +142,12 @@ local function load(src)
     Excavatinator.numberOfRaces = #private.data.raceList
 
     updateCrateInformation()
+
+    -- Figure out the Legion scheduling
+    local timeOfNextReset = GetServerTime() + C_DateAndTime.GetSecondsUntilWeeklyReset()
+    local weekNumber = math.floor(timeOfNextReset / 604800)
+
+    Excavatinator.legionCycleWeek = (weekNumber-1) % 26 + 1 -- Same result as weekNumber % 26, except with 26 instead of 0
 
     -- Trigger the readyForMapping event
     private.events.readyForMapping:trigger()
