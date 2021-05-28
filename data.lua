@@ -10,6 +10,7 @@ private.data.races = {
         id = 1,
         fragment = 384,
         keystone = 52843,
+        keystoneValue = 12,
         artifacts = {
             { spell =  88910, item =  63113, rarity = "common", patch = 40000 }, -- Belt Buckle with Anvilmar Crest
             { spell =  90411, item =  64339, rarity = "common", patch = 40000 }, -- Bodacious Door Knocker
@@ -48,6 +49,7 @@ private.data.races = {
         id = 2,
         fragment = 398,
         keystone = 64394,
+        keystoneValue = 12,
         artifacts = {
             { spell =  90853, item =  64440, rarity = "common", patch = 40000 }, -- Anklet with Golden Bells
             { spell =  90983, item =  64456, rarity =   "rare", patch = 40000 }, -- Arrival of the Naaru
@@ -64,6 +66,7 @@ private.data.races = {
     fossil = {
         id = 3,
         fragment = 393,
+        keystoneValue = 12,
         artifacts = {
             { spell =  98560, item =  69776, rarity =   "rare", patch = 40100 }, -- Ancient Amber
             { spell =  90452, item =  64355, rarity = "common", patch = 40000 }, -- Ancient Shark Jaws
@@ -88,6 +91,7 @@ private.data.races = {
         id = 4,
         fragment = 394,
         keystone = 63127,
+        keystoneValue = 12,
         artifacts = {
             { spell =  91761, item =  64646, rarity =   "rare", patch = 40000 }, -- Bones of Transformation
             { spell =  91762, item =  64647, rarity = "common", patch = 40000 }, -- Carcanet of the Hundred Magi
@@ -120,6 +124,7 @@ private.data.races = {
         id = 5,
         fragment = 400,
         keystone = 64396,
+        keystoneValue = 12,
         artifacts = {
             { spell =  91214, item =  64481, rarity =   "rare", patch = 40000 }, -- Blessing of the Old God
             { spell =  91209, item =  64479, rarity = "common", patch = 40000 }, -- Ewer of Jormungar Blood
@@ -136,6 +141,7 @@ private.data.races = {
         id = 6,
         fragment = 397,
         keystone = 64392,
+        keystoneValue = 12,
         artifacts = {
             { spell =  90831, item =  64436, rarity = "common", patch = 40000 }, -- Fiendish Whip
             { spell =  90734, item =  64421, rarity = "common", patch = 40000 }, -- Fierce Wolf Figurine
@@ -174,6 +180,7 @@ private.data.races = {
         id = 8,
         fragment = 385,
         keystone = 63128,
+        keystoneValue = 12,
         artifacts = {
             { spell =  90429, item =  64348, rarity = "common", patch = 40000 }, -- Atal'ai Scepter
             { spell =  90421, item =  64346, rarity = "common", patch = 40000 }, -- Bracelet of Jade and Coins
@@ -198,6 +205,7 @@ private.data.races = {
         id = 27,
         fragment = 399,
         keystone = 64395,
+        keystoneValue = 12,
         artifacts = {
             { spell =  91014, item =  64464, rarity = "common", patch = 40000 }, -- Fanged Cloak Pin
             { spell =  91012, item =  64462, rarity = "common", patch = 40000 }, -- Flint Striker
@@ -270,6 +278,7 @@ private.data.races = {
         id = 315,
         fragment = 829,
         keystone = 109585,
+        keystoneValue = 12,
         artifacts = {
             { spell = 172460, item = 117354, rarity =   "rare", patch = 60000 },                                                             -- Ancient Nest Guardian
             { spell = 168328, item = 114204, rarity = "common", patch = 60000, pristine = { item = 114222, quest =  36778 }, crate = true }, -- Apexis Crystal
@@ -289,6 +298,7 @@ private.data.races = {
         id = 350,
         fragment = 821,
         keystone = 108439,
+        keystoneValue = 12,
         artifacts = {
             { spell = 168305, item = 114171, rarity = "common", patch = 60000, pristine = { item = 114172, quest =  36756 }, crate = true }, -- Ancestral Talisman
             { spell = 172466, item = 117380, rarity =   "rare", patch = 60000 },                                                             -- Ancient Frostwolf Fang
@@ -317,6 +327,7 @@ private.data.races = {
         id = 382,
         fragment = 828,
         keystone = 109584,
+        keystoneValue = 12,
         artifacts = {
             { spell = 168315, item = 114191, rarity = "common", patch = 60000, pristine = { item = 114210, quest =  36767 }, crate = true }, -- Eye of Har'gunn the Blind
             { spell = 168313, item = 114189, rarity = "common", patch = 60000, pristine = { item = 114208, quest =  36765 }, crate = true }, -- Gladiator's Shield
@@ -336,6 +347,7 @@ private.data.races = {
         id = 404,
         fragment = 1172,
         keystone = 130903,
+        keystoneValue = 12,
         artifacts = {
             { spell = 196471, item = 130907, rarity = "common", patch = 70000, pristine = { item = 130922, quest =  40350 }, crate = true }, -- Inert Leystone Charm
             { spell = 196474, item = 130910, rarity = "common", patch = 70000, pristine = { item = 130925, quest =  40353 }, crate = true }, -- Nobleman's Letter Opener
@@ -353,6 +365,7 @@ private.data.races = {
         id = 406,
         fragment = 1173,
         keystone = 130904,
+        keystoneValue = 12,
         artifacts = {
             { spell = 196478, item = 130914, rarity = "common", patch = 70000, pristine = { item = 130929, quest =  40357 }, crate = true }, -- Drogbar Gem-Roller
             { spell = 196477, item = 130913, rarity = "common", patch = 70000, pristine = { item = 130928, quest =  40356 }, crate = true }, -- Hand-Smoothed Pyrestone
@@ -368,6 +381,7 @@ private.data.races = {
         id = 408,
         fragment = 1174,
         keystone = 130905,
+        keystoneValue = 12,
         artifacts = {
             { spell = 196481, item = 130917, rarity = "common", patch = 70000, pristine = { item = 130932, quest =  40360 }, crate = true }, -- Flayed-Skin Chronicle
             { spell = 196484, item = 130920, rarity = "common", patch = 70000, pristine = { item = 130935, quest =  40363 }, crate = true }, -- Houndstooth Hauberk
@@ -385,6 +399,7 @@ private.data.races = {
         id = 423,
         fragment = 1534,
         keystone = 154989,
+        keystoneValue = 12,
         artifacts = {
             { spell = 257720, item = 154913, rarity = "common", patch = 80000, pristine = { item = 154931, quest =  51926 }, crate = true }, -- Akun'Jar Vase
             { spell = 257721, item = 154914, rarity = "common", patch = 80000, pristine = { item = 154932, quest =  51929 }, crate = true }, -- Urn of Passage
@@ -401,6 +416,7 @@ private.data.races = {
         id = 424,
         fragment = 1535,
         keystone = 154990,
+        keystoneValue = 12,
         artifacts = {
             { spell = 257715, item = 154921, rarity = "common", patch = 80000, pristine = { item = 154926, quest =  51950 }, crate = true }, -- Ceremonial Bonesaw
             { spell = 257716, item = 154922, rarity = "common", patch = 80000, pristine = { item = 154927, quest =  51951 }, crate = true }, -- Ancient Runebound Tome

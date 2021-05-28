@@ -121,7 +121,8 @@ function Race:construct(index, key, data)
         self.artifacts[i] = artifact
         self.artifactsByItemName[artifact.itemName:lower()] = artifact
         self.artifactsByItemID[artifact.itemID] = artifact
-        if artifact.spellName ~= 'Archaeology Project' then self.artifactsBySpellName[artifact.spellName:lower()] = artifact end
+        local ignoreName = GetSpellInfo(223858)
+        if artifact.spellName ~= ignoreName then self.artifactsBySpellName[artifact.spellName:lower()] = artifact end
         -- Some expansions just made "Archaeology Project" the name of the spell
         -- These can't be used to identify the artifact
     end
