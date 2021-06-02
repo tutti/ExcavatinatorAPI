@@ -278,7 +278,7 @@ private.data.races = {
         id = 315,
         fragment = 829,
         keystone = 109585,
-        keystoneValue = 12,
+        keystoneValue = 20,
         artifacts = {
             { spell = 172460, item = 117354, rarity =   "rare", patch = 60000 },                                                             -- Ancient Nest Guardian
             { spell = 168328, item = 114204, rarity = "common", patch = 60000, pristine = { item = 114222, quest =  36778 }, crate = true }, -- Apexis Crystal
@@ -298,7 +298,7 @@ private.data.races = {
         id = 350,
         fragment = 821,
         keystone = 108439,
-        keystoneValue = 12,
+        keystoneValue = 20,
         artifacts = {
             { spell = 168305, item = 114171, rarity = "common", patch = 60000, pristine = { item = 114172, quest =  36756 }, crate = true }, -- Ancestral Talisman
             { spell = 172466, item = 117380, rarity =   "rare", patch = 60000 },                                                             -- Ancient Frostwolf Fang
@@ -327,7 +327,7 @@ private.data.races = {
         id = 382,
         fragment = 828,
         keystone = 109584,
-        keystoneValue = 12,
+        keystoneValue = 20,
         artifacts = {
             { spell = 168315, item = 114191, rarity = "common", patch = 60000, pristine = { item = 114210, quest =  36767 }, crate = true }, -- Eye of Har'gunn the Blind
             { spell = 168313, item = 114189, rarity = "common", patch = 60000, pristine = { item = 114208, quest =  36765 }, crate = true }, -- Gladiator's Shield
@@ -457,7 +457,7 @@ private.data.raceList = {
 private.data.legionSchedule = {
     { rareRace = 'highborne',          fragmentRace = 'highborne',          itemID = 131745, }, -- Key of Kalyndras
     { rareRace = 'demonic',            fragmentRace = 'demonic',            itemID = 136922, }, -- Wyrmy Tunkins
-    { rareRace = 'highborne',          fragmentRace = 'highmountaintauren', itemID = 134078, }, -- Orb of Sciallax
+    { rareRace = 'highborne',          fragmentRace = 'highborne',          itemID = 134078, }, -- Orb of Sciallax
     { rareRace = 'highmountaintauren', fragmentRace = 'highmountaintauren', itemID = 131736, }, -- Prizerock Neckband
     { rareRace = 'demonic',            fragmentRace = 'demonic',            itemID = 131743, }, -- Blood of Young Mannoroth
     { rareRace = 'highborne',          fragmentRace = 'highborne',          itemID = 131744, }, -- Key to Nar'thalas Academy

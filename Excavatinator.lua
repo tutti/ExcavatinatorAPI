@@ -60,12 +60,19 @@ function Excavatinator:getActiveDigsites()
     return private.FindManager.activeDigsites
 end
 
+function Excavatinator:printUnmappedArtifactInfo()
+    for i, race in pairs(racesByIndex) do
+        race:_printUnmappedArtifacts()
+    end
+end
+
 local accessor = Accessor:new(Excavatinator)
 accessor:exposeValue('ready')
 accessor:exposeValue('numberOfCrates')
 accessor:exposeValue('numberOfCrateableArtifacts')
 accessor:exposeValue('numberOfRaces')
 accessor:exposeConstant('events', eventsAccessor.access)
+accessor:exposeFunction('printUnmappedArtifactInfo', Excavatinator.printUnmappedArtifactInfo)
 accessor:exposeFunction('getCrateableArtifacts', function()
     local artifacts = {}
     for i, artifact in ipairs(Excavatinator.crateableArtifacts) do artifacts[i] = artifact end

@@ -204,6 +204,18 @@ function Race:_itemEvent()
     end
 end
 
+function Race:_printUnmappedArtifacts()
+    local atLeastOneUnmappedProject = false
+    for k, v in pairs(self.unmappedArtifactsByName) do
+        print('[' .. self.name .. '] Unmapped project name: ' .. k)
+        atLeastOneUnmappedProject = true
+    end
+    if not atLeastOneUnmappedProject then return end
+    for i, artifact in ipairs(self.artifacts) do
+        if not artifact._loaded then print('[' .. self.name .. '] Unmapped item name: ' .. artifact.itemName) end
+    end
+end
+
 function Race:_getUnmappedArtifactByName(name)
     return self.unmappedArtifactsByName[name:lower()]
 end

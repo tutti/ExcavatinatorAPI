@@ -33,6 +33,7 @@ function ArtifactAccessor:construct(artifact)
     self:exposeValue('hasBeenCompleted')
     --self:exposeValue('firstCompletionTime') -- TODO This feature is incomplete, and not listed in the documentation.
     self:exposeValue('timesCompleted')
+    self:exposeValue('pristineHasBeenStarted')
     self:exposeValue('pristineHasBeenCompleted')
 
     self:exposeFunction('getProgress', artifact.getProgress)
@@ -85,6 +86,7 @@ function Artifact:construct(data, race)
     self.hasBeenCompleted = false
     self.firstCompletionTime = 0
     self.timesCompleted = 0
+    self.pristineHasBeenStarted = false
     self.pristineHasBeenCompleted = false
 
     -- Events
@@ -122,6 +124,15 @@ function Artifact:_loadInfo(description, icon, keystoneSlots, completionTime, co
         self.pristineHasBeenCompleted = true
     end
 
+    if self.hasPristineVersion then
+        if C_QuestLog.IsQuestFlaggedCompleted(self.pristineQuestID) then
+            self.pristineHasBeenCompleted = true
+        end
+        if C_QuestLog.GetLogIndexForQuestID(self.pristineQuestID) then
+            self.pristineHasBeenStarted = true
+        end
+    end
+
     self._loaded = true
 end
 
@@ -151,6 +162,7 @@ end
 WoWEvents.QUEST_TURNED_IN:addListener(function(questID)
     local completedPristineArtifact = pristineQuestMap[questID]
     if completedPristineArtifact then
+        completedPristineArtifact.pristineHasBeenStarted = false
         completedPristineArtifact.pristineHasBeenCompleted = true
         completedPristineArtifact.events.updated:trigger()
     end
@@ -159,6 +171,14 @@ WoWEvents.QUEST_TURNED_IN:addListener(function(questID)
     if completedRareArtifact then
         completedRareArtifact.hasBeenCompleted = true
         completedRareArtifact.events.updated:trigger()
+    end
+end)
+
+WoWEvents.QUEST_ACCEPTED:addListener(function(questID)
+    local completedPristineArtifact = pristineQuestMap[questID]
+    if completedPristineArtifact then
+        completedPristineArtifact.pristineHasBeenStarted = true
+        completedPristineArtifact.events.updated:trigger()
     end
 end)
 
@@ -219,7 +239,7 @@ function Artifact:getWeeksUntilAvailable()
     -- If the artifact is the current Legion rare project, this will return 0.
     -- Otherwise, returns the number of weeks until it is, where a 1 means it
     -- will be available next week.
-    -- For all other artifact, this always returns 0.
+    -- For all other artifacts, this always returns 0.
 
     -- Check whether this is a Legion rare
     if self.rarity == 'common' then return 0 end
