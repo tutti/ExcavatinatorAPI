@@ -145,7 +145,7 @@ function FindManager:updateDigsite()
 
     if not self.currentDigsite or found.researchSiteID ~= self.currentDigsite.digsite.researchSiteID then
         self.currentDigsite = self.activeDigsites[found.researchSiteID]
-        private.events.enterDigsite:trigger(self.currentDigsite)
+        private.events.enterDigsite:trigger(self.currentDigsite.accessor.access)
     end
 end
 
