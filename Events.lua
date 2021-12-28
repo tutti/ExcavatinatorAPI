@@ -2,7 +2,7 @@ local _, private = ...
 
 local Class = private.Class
 
-function createListenable(event)
+local function createListenable(event)
     local listenable = {}
     setmetatable(listenable, {
         __index = {
