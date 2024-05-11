@@ -6,8 +6,14 @@ private.TOC_VERSION = TOC_VERSION
 private.data = {}
 
 private.data.races = {
+    other = {
+        id = 0,
+        patch = 40000,
+        artifacts = {},
+    },
     dwarf = {
         id = 1,
+        patch = 40000,
         fragment = 384,
         keystone = 52843,
         keystoneValue = 12,
@@ -47,6 +53,7 @@ private.data.races = {
     },
     draenei = {
         id = 2,
+        patch = 40000,
         fragment = 398,
         keystone = 64394,
         keystoneValue = 12,
@@ -65,8 +72,9 @@ private.data.races = {
     },
     fossil = {
         id = 3,
+        patch = 40000,
         fragment = 393,
-        keystoneValue = 12,
+        --keystoneValue = 12,
         artifacts = {
             { spell =  98560, item =  69776, rarity =   "rare", patch = 40100 }, -- Ancient Amber
             { spell =  90452, item =  64355, rarity = "common", patch = 40000 }, -- Ancient Shark Jaws
@@ -89,6 +97,7 @@ private.data.races = {
     },
     nightelf = {
         id = 4,
+        patch = 40000,
         fragment = 394,
         keystone = 63127,
         keystoneValue = 12,
@@ -122,6 +131,7 @@ private.data.races = {
     },
     nerubian = {
         id = 5,
+        patch = 40000,
         fragment = 400,
         keystone = 64396,
         keystoneValue = 12,
@@ -139,6 +149,7 @@ private.data.races = {
     },
     orc = {
         id = 6,
+        patch = 40000,
         fragment = 397,
         keystone = 64392,
         keystoneValue = 12,
@@ -157,6 +168,7 @@ private.data.races = {
     },
     tolvir = {
         id = 7,
+        patch = 40000,
         fragment = 401,
         keystone = 64397,
         keystoneValue = 12,
@@ -178,6 +190,7 @@ private.data.races = {
     },
     troll = {
         id = 8,
+        patch = 40000,
         fragment = 385,
         keystone = 63128,
         keystoneValue = 12,
@@ -203,6 +216,7 @@ private.data.races = {
     },
     vrykul = {
         id = 27,
+        patch = 40000,
         fragment = 399,
         keystone = 64395,
         keystoneValue = 12,
@@ -218,6 +232,7 @@ private.data.races = {
     },
     mantid = {
         id = 29,
+        patch = 50000,
         fragment = 754,
         keystone = 95373,
         keystoneValue = 20,
@@ -236,6 +251,7 @@ private.data.races = {
     },
     pandaren = {
         id = 229,
+        patch = 50000,
         fragment = 676,
         keystone = 79868,
         keystoneValue = 20,
@@ -256,6 +272,7 @@ private.data.races = {
     },
     mogu = {
         id = 231,
+        patch = 50000,
         fragment = 677,
         keystone = 79869,
         keystoneValue = 20,
@@ -276,6 +293,7 @@ private.data.races = {
     },
     arakkoa = {
         id = 315,
+        patch = 60000,
         fragment = 829,
         keystone = 109585,
         keystoneValue = 20,
@@ -296,6 +314,7 @@ private.data.races = {
     },
     draenorclans = {
         id = 350,
+        patch = 60000,
         fragment = 821,
         keystone = 108439,
         keystoneValue = 20,
@@ -325,6 +344,7 @@ private.data.races = {
     },
     ogre = {
         id = 382,
+        patch = 60000,
         fragment = 828,
         keystone = 109584,
         keystoneValue = 20,
@@ -345,6 +365,7 @@ private.data.races = {
     },
     highborne = {
         id = 404,
+        patch = 70000,
         fragment = 1172,
         keystone = 130903,
         keystoneValue = 12,
@@ -363,6 +384,7 @@ private.data.races = {
     },
     highmountaintauren = {
         id = 406,
+        patch = 70000,
         fragment = 1173,
         keystone = 130904,
         keystoneValue = 12,
@@ -379,6 +401,7 @@ private.data.races = {
     },
     demonic = {
         id = 408,
+        patch = 70000,
         fragment = 1174,
         keystone = 130905,
         keystoneValue = 12,
@@ -397,6 +420,7 @@ private.data.races = {
     },
     zandalari = {
         id = 423,
+        patch = 80000,
         fragment = 1534,
         keystone = 154989,
         keystoneValue = 12,
@@ -414,6 +438,7 @@ private.data.races = {
     },
     drust = {
         id = 424,
+        patch = 80000,
         fragment = 1535,
         keystone = 154990,
         keystoneValue = 12,
@@ -431,18 +456,9 @@ private.data.races = {
     },
 }
 
+-- Cataclysm
 private.data.raceList = {
-    "drust",                -- 1
-    "zandalari",            -- 2
-    "demonic",              -- 3
-    "highmountaintauren",   -- 4
-    "highborne",            -- 5
-    "ogre",                 -- 6
-    "draenorclans",         -- 7
-    "arakkoa",              -- 8
-    "mogu",                 -- 9
-    "pandaren",             -- 10
-    "mantid",               -- 11
+    "other",
     "vrykul",               -- 12
     "troll",                -- 13
     "tolvir",               -- 14
@@ -453,6 +469,95 @@ private.data.raceList = {
     "draenei",              -- 19
     "dwarf"                 -- 20
 }
+
+-- Mists of Pandaria
+if private.TOC_VERSION >= 50000 then
+    private.data.raceList = {
+        "mogu",                 -- 9
+        "pandaren",             -- 10
+        "mantid",               -- 11
+        "vrykul",               -- 12
+        "troll",                -- 13
+        "tolvir",               -- 14
+        "orc",                  -- 15
+        "nerubian",             -- 16
+        "nightelf",             -- 17
+        "fossil",               -- 18
+        "draenei",              -- 19
+        "dwarf"                 -- 20
+    }
+end
+
+-- Warlord of Draenor
+if private.TOC_VERSION >= 60000 then
+    private.data.raceList = {
+        "ogre",                 -- 6
+        "draenorclans",         -- 7
+        "arakkoa",              -- 8
+        "mogu",                 -- 9
+        "pandaren",             -- 10
+        "mantid",               -- 11
+        "vrykul",               -- 12
+        "troll",                -- 13
+        "tolvir",               -- 14
+        "orc",                  -- 15
+        "nerubian",             -- 16
+        "nightelf",             -- 17
+        "fossil",               -- 18
+        "draenei",              -- 19
+        "dwarf"                 -- 20
+    }
+end
+
+-- Legion
+if private.TOC_VERSION >= 70000 then
+    private.data.raceList = {
+        "demonic",              -- 3
+        "highmountaintauren",   -- 4
+        "highborne",            -- 5
+        "ogre",                 -- 6
+        "draenorclans",         -- 7
+        "arakkoa",              -- 8
+        "mogu",                 -- 9
+        "pandaren",             -- 10
+        "mantid",               -- 11
+        "vrykul",               -- 12
+        "troll",                -- 13
+        "tolvir",               -- 14
+        "orc",                  -- 15
+        "nerubian",             -- 16
+        "nightelf",             -- 17
+        "fossil",               -- 18
+        "draenei",              -- 19
+        "dwarf"                 -- 20
+    }
+end
+
+-- Battle for Azeroth
+if private.TOC_VERSION >= 80000 then
+    private.data.raceList = {
+        "drust",                -- 1
+        "zandalari",            -- 2
+        "demonic",              -- 3
+        "highmountaintauren",   -- 4
+        "highborne",            -- 5
+        "ogre",                 -- 6
+        "draenorclans",         -- 7
+        "arakkoa",              -- 8
+        "mogu",                 -- 9
+        "pandaren",             -- 10
+        "mantid",               -- 11
+        "vrykul",               -- 12
+        "troll",                -- 13
+        "tolvir",               -- 14
+        "orc",                  -- 15
+        "nerubian",             -- 16
+        "nightelf",             -- 17
+        "fossil",               -- 18
+        "draenei",              -- 19
+        "dwarf"                 -- 20
+    }
+end
 
 private.data.legionSchedule = {
     { rareRace = 'highborne',          fragmentRace = 'highborne',          itemID = 131745, }, -- Key of Kalyndras

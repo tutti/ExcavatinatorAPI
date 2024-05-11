@@ -3,17 +3,22 @@ local _, private = ...
 -- This is a loader that ensures all items and spells are loaded and ready.
 -- It takes a callback that will be called when they are.
 private.loader = function(callback)
-    local itemIDs = { 87399 } -- The "Crated Artifact" item ID
+    local itemIDs = {} -- If in Cataclysm, there is no "Crated Artifact"
+    if private.TOC_VERSION >= 50000 then
+        local itemIDs = { 87399 } -- The "Crated Artifact" item ID
+    end
     local spellIDs = { 80451 } -- The "Survey" spell ID
 
     for k, race in pairs(private.data.races) do
-        if race.keystone then itemIDs[#itemIDs+1] = race.keystone end
-        for i=1, #race.artifacts do
-            if race.artifacts[i].patch < private.TOC_VERSION then
-                itemIDs[#itemIDs+1] = race.artifacts[i].item
-                spellIDs[#spellIDs+1] = race.artifacts[i].spell
-                if race.artifacts[i].pristine then
-                    itemIDs[#itemIDs+1] = race.artifacts[i].pristine.item
+        if private.TOC_VERSION >= race.patch then
+            if race.keystone then itemIDs[#itemIDs+1] = race.keystone end
+            for i=1, #race.artifacts do
+                if race.artifacts[i].patch < private.TOC_VERSION then
+                    itemIDs[#itemIDs+1] = race.artifacts[i].item
+                    spellIDs[#spellIDs+1] = race.artifacts[i].spell
+                    if race.artifacts[i].pristine then
+                        itemIDs[#itemIDs+1] = race.artifacts[i].pristine.item
+                    end
                 end
             end
         end

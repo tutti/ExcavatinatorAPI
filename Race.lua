@@ -161,6 +161,8 @@ function Race:_currencyEvent(currencyName)
     -- currency that changed was the fragment for this race, and if so updates
     -- the race.
 
+    if not self.fragmentID then return end
+
     local before = self.fragments
     local currency = C_CurrencyInfo.GetCurrencyInfo(self.fragmentID)
 

@@ -69,6 +69,7 @@ function Artifact:construct(data, race)
     self.canCrate = data.crate or false
     self.keystoneSlots = 0
     self._loaded = false
+    self._lastCompletedTime = 0 -- Some artifacts get double completion events - this uses a timeout to avoid double counting
 
     -- Pristine artifact information
     self.hasPristineVersion = data.pristine and true or false
@@ -137,6 +138,10 @@ function Artifact:_loadInfo(description, icon, keystoneSlots, completionTime, co
 end
 
 function Artifact:_completed()
+    local now = GetTime()
+    if now - self._lastCompletedTime < 5 then return end -- Don't count two completions within 5 seconds
+    self._lastCompletedTime = now
+
     -- Internal function
     -- Called when the artifact is marked as completed
     self.hasBeenCompleted = true

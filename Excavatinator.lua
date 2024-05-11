@@ -187,15 +187,17 @@ WoWEvents.ADDON_LOADED:addOnceListener(function(addonName)
         if historyReady then
             if dataFetched then load() end
         else
-            RequestArtifactCompletionHistory()
+        --    RequestArtifactCompletionHistory()
+            historyReady = true
+            if addonLoaded and dataFetched then load() end
         end
     end
 end)
 
-WoWEvents.RESEARCH_ARTIFACT_HISTORY_READY:addOnceListener(function()
+--[[WoWEvents.RESEARCH_ARTIFACT_HISTORY_READY:addOnceListener(function()
     historyReady = true
     if addonLoaded and dataFetched then load() end
-end)
+end)]]
 
 WoWEvents.RESEARCH_ARTIFACT_COMPLETE:addListener(function(name)
     for i=1, #racesByIndex do
@@ -228,8 +230,10 @@ end)
 
 -- Set up mapping for artifacts in English
 -- This is also an example of how this can be done for any other languages
-private.events.readyForMapping:addOnceListener(function()
-    Excavatinator:getRaceByKey('demonic'):setArtifactMapping('Wyrmy Tunkins', 'Infernal Device')
-    Excavatinator:getRaceByKey('highborne'):setArtifactMapping('Dark Shard of Sciallax', 'Orb of Sciallax')
-    Excavatinator:getRaceByKey('tolvir'):setArtifactMapping('Crawling Claw', 'Mummified Monkey Paw')
-end)
+if private.TOC_VERSION >= 70000 then
+    private.events.readyForMapping:addOnceListener(function()
+        Excavatinator:getRaceByKey('demonic'):setArtifactMapping('Wyrmy Tunkins', 'Infernal Device')
+        Excavatinator:getRaceByKey('highborne'):setArtifactMapping('Dark Shard of Sciallax', 'Orb of Sciallax')
+        Excavatinator:getRaceByKey('tolvir'):setArtifactMapping('Crawling Claw', 'Mummified Monkey Paw')
+    end)
+end
