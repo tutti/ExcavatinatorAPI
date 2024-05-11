@@ -2,7 +2,7 @@
 ## Title: Excavatinator API
 ## Notes: The information handling for Excavatinator, in API form
 ## Author: Tutti (Azjol-Nerub EU)
-## Version: 4.0
+## Version: 4.1
 ## SavedVariables: ExcavatinatorAPIPinDB
 
 Class.lua
